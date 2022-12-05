@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Display from "../components/Display";
 import input from "../data/day2";
-import { stringLinesToString, stringLinesToStrings } from "../utils";
+import { stringLinesToStrings } from "../utils";
 
 const SCORES: Record<string, number> = {
   X: 1, // rock
@@ -30,7 +30,7 @@ const RESULT: Record<string, Record<string, number>> = {
   },
 };
 
-const Day1 = () => {
+const Day2 = () => {
   const [answer1, setAnswer1] = useState("");
   const [answer2, setAnswer2] = useState("");
 
@@ -104,4 +104,4 @@ const Day1 = () => {
   return <Display answer1={answer1} answer2={answer2} />;
 };
 
-export default Day1;
+export default Day2;
