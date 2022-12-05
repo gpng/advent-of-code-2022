@@ -1,38 +1,53 @@
 import { useEffect, useState } from "react";
 import Display from "../components/Display";
 import input from "../data/day1";
-import { stringLinesToNumber } from "../utils";
+import { stringLinesToString } from "../utils";
 
 const Day1 = () => {
   const [answer1, setAnswer1] = useState("");
   const [answer2, setAnswer2] = useState("");
 
-  // count of positive increases from previous number
-  const countOfPositiveIncreases = (numbers: number[]): number => {
-    let count = 0;
-    for (let i = 0; i < numbers.length - 1; i++) {
-      if (numbers[i] < numbers[i + 1]) {
-        count++;
+  const highestSum = (lines: string[]): number => {
+    let sum = 0;
+    let highest = 0;
+    lines.forEach((line) => {
+      if (line.length === 0) {
+        if (sum > highest) {
+          highest = sum;
+        }
+        sum = 0;
+      } else {
+        const num = parseInt(line, 10);
+        sum += num;
       }
-    }
-    return count;
+    });
+
+    return highest;
   };
 
-  // sum of previous 3 in array
-  const sumOfPreviousThree = (numbers: number[]): number[] => {
-    const sums = [];
-    for (let i = 0; i < numbers.length - 2; i++) {
-      sums.push(numbers[i] + numbers[i + 1] + numbers[i + 2]);
-    }
-    return sums;
+  const top3Sum = (lines: string[]): number => {
+    const sums: number[] = [];
+    let sum = 0;
+    lines.forEach((line) => {
+      if (line.length === 0) {
+        sums.push(sum);
+        sum = 0;
+      } else {
+        const num = parseInt(line, 10);
+        sum += num;
+      }
+    });
+
+    sums.sort((a, b) => b - a);
+    console.log("sums: ", sums);
+
+    return sums[0] + sums[1] + sums[2];
   };
 
   const main = () => {
-    const numbers = stringLinesToNumber(input);
-    setAnswer1(countOfPositiveIncreases(numbers).toString());
-    setAnswer2(
-      countOfPositiveIncreases(sumOfPreviousThree(numbers)).toString()
-    );
+    const lines = stringLinesToString(input);
+    setAnswer1(highestSum(lines).toString());
+    setAnswer2(top3Sum(lines).toString());
   };
 
   useEffect(() => {
