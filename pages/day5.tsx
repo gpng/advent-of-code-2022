@@ -92,8 +92,6 @@ const Day5 = () => {
       grid[i] = grid[i].filter((x) => x != " ");
     });
 
-    console.log("original grid: ", grid);
-
     for (let i = height + 2; i < lines.length; i++) {
       const words = lines[i].split(" ");
       const num = parseInt(words[1], 10);
