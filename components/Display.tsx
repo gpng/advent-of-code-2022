@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface Props {
   answer1?: string;
@@ -32,6 +32,7 @@ const Display: FC<Props> = ({ answer1 = "", answer2 = "" }) => {
           width: 600px;
           margin: 0 24px;
           max-width: 100%;
+          white-space: pre-line;
         }
       `}</style>
     </div>

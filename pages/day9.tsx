@@ -61,7 +61,7 @@ const newTailsPos = (headPos: number[], oldTailPos: number[]): number[] => {
   return tailPos;
 };
 
-const Day8 = () => {
+const Day9 = () => {
   const [answer1, setAnswer1] = useState("");
   const [answer2, setAnswer2] = useState("");
 
@@ -158,4 +158,4 @@ const Day8 = () => {
   return <Display answer1={answer1} answer2={answer2} />;
 };
 
-export default Day8;
+export default Day9;
